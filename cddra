@@ -1,0 +1,2 @@
+#!/bin/bash
+eval cd "\""$(find -type d "$@" | sed 's/^..//' | rofi -i -dmenu -p cddra)"\""

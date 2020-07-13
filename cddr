@@ -1,0 +1,2 @@
+#!/bin/bash
+eval cd "\""$(find -not -path '*/\.*' -type d \( ! -iname ".*" \)| sed 's/^..//' | rofi -i -dmenu -p cddr)"\""

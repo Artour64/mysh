@@ -1,0 +1,2 @@
+#!/bin/bash
+eval xdg-open "\""$(find . -not -path '*/\.*' | sed 's/^..//' | rofi -i -dmenu -p open-file)"\""

@@ -1,0 +1,8 @@
+#!/bin/bash
+i=$(xdotool getactivewindow)
+unset w h
+eval $(xwininfo -id $i | sed -n \
+	-e "s/^ \+Width: \+\([0-9]\+\).*/w=\1/p" \
+	-e "s/^ \+Height: \+\([0-9]\+\).*/h=\1/p" )
+let w=$w/2 h=$h/2
+xdotool mousemove --window $i $w $h
