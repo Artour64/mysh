@@ -1,7 +1,7 @@
 #!/bin/bash
 
 q=""
-declare -a p=("Discord" "zoom" "geary")
+declare -a p=("Discord" "zoom" "geary" "kdeconnectd")
 
 for c in "${p[@]}"
 do
