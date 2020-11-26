@@ -1,17 +1,37 @@
-#!/bin/bash
+#!/bin/dash
+res="3840x2160"
+mon=1;
+a=$( xrandr -q | grep -A 1 --no-group-separator " connected" | sed 's/^\ *//g' | cut -f1 -d ' ' ) 
 
-a=$( xrandr --listmonitors |grep -o HDMI...... )
-d1=$(echo $a | cut -c1-5)
-r1=$(echo $a | cut -c7-10)
-d2=$(echo $a | cut -c12-16)
-r2=$(echo $a | cut -c18-21)
+d1=$(echo $a | cut -d ' ' -f1 )
+r1=$(echo $a | cut -d ' ' -f2 )
+d2=$(echo $a | cut -d ' ' -f3 )
+r2=$(echo $a | cut -d ' ' -f4 )
 
-if [ $r1 -eq "1920" ];then
-	xrandr --output $d2 --off
-	xrandr --output $d2 --auto --right-of $d1
-elif [ $r2 -eq "1920" ];then
-	xrandr --output $d1 --off
-	xrandr --output $d1 --auto --right-of $d2
+if [ "$mon" = 1 ];then
+	if [ "$r1" = "$res" ];then
+		xrandr --output $d2 --off
+		xrandr --output $d1 --auto
+	elif [ "$r2" = "$res" ];then
+		xrandr --output $d1 --off
+		xrandr --output $d2
+	else
+		echo "error: no monitor with \"$res\" resolution found, first display used instead"
+		xrandr --output $d2 --off
+		xrandr --output $d1 --auto
+	fi
+elif [ "$mon" = 2 ];then
+	if [ "$r1" = "$res" ];then
+		xrandr --output $d2 --off
+		xrandr --output $d2 --auto --right-of $d1
+	elif [ "$r2" = "$res" ];then
+		xrandr --output $d1 --off
+		xrandr --output $d1 --auto --right-of $d2
+	else
+		echo "error: no monitor with \"$res\" resolution found, first display used instead"
+		xrandr --output $d2 --off
+		xrandr --output $d1 --auto
+	fi
 else
-	echo error
+	echo "error: unknown or unhandled monitor count"
 fi

@@ -1,2 +1,3 @@
-#!/bin/bash
-eval xdg-open "\""$(find . -not -path '*/\.*' | sed 's/^..//' | rofi -i -dmenu -p open-file)"\""
+#!/bin/dash
+eval xdg-open "\""$(find . -not -path '*/\.*' | sed 's/^..//' | rofi -sort -i -dmenu -p open-file)"\""
+

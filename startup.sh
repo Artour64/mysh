@@ -7,3 +7,5 @@ nm-applet &
 /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 parcellite &
 mouse-speed.sh &
+searx-run &
+ibus-daemon -xrd

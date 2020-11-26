@@ -1,2 +1,2 @@
-#!/bin/bash
-eval cd "\""$(find -type d "$@" | sed 's/^..//' | rofi -i -dmenu -p cddra)"\""
+#!/bin/dash
+eval cd "\""$(find -type d "$@" | sed 's/^..//' | rofi -sort -i -dmenu -p cddra)"\""

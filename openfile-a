@@ -1,2 +1,2 @@
-#!/bin/bash
-eval xdg-open "\""$(find -print "$@" | sed 's/^..//' | rofi -i -dmenu -p open-file-a)"\""
+#!/bin/dash
+eval xdg-open "\""$(find -print "$@" | sed 's/^..//' | rofi -sort -i -dmenu -p open-file-a)"\""
