@@ -1,2 +1,2 @@
-#/bin/sh
-date +\ %a\ %F\ %I:%M\ %p\ 
+#!/bin/dash
+date "+ %a %F %R (%-I%p) "
