@@ -16,9 +16,14 @@ if [ "$mon" = 1 ];then
 		xrandr --output $d1 --off
 		xrandr --output $d2
 	else
-		echo "error: no monitor with \"$res\" resolution found, first display used instead"
-		xrandr --output $d2 --off
-		xrandr --output $d1 --auto
+		if [ "$r1" = "4096x2160" ]; then
+			#xrandr --output $d2 --off
+			xrandr --output $d1 -s "$res"
+		else
+			echo "error: no monitor with \"$res\" resolution found, first display used instead"
+			#xrandr --output $d2 --off
+			xrandr --output $d1 --auto
+		fi
 	fi
 elif [ "$mon" = 2 ];then
 	if [ "$r1" = "$res" ];then
