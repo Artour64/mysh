@@ -109,10 +109,27 @@ elif [ "$1" = "char" ];then
 	exit
 fi
 
-helpmsg=""
+helpmsg="this script lets you enable/disable your power settings (standby, dim screen, etc) similar to the caffeine gnome extension
+
+running without arguments will open a rofi/dmenu prompt to choose toggle, set-on, or set-off actions
+the prompt will show the current status (on/off/mixed).
+
+commands:
+char - same as running without arguments but the status will be shown as a single character (☀/☾/?)
+status - prints the status (on/off/mixed)
+stats char - prints the status as a single character (☀/☾/?)
+on - enable caffeine (will disable screensaver and dpms)
+off - disable caffeine (will enable screensaver and dpms)
+toggle - toggle enabled/disabled. if status is 'mixed', will enable
+help -  displays this help message
+-h - displays this help message
+--help - displays this help message
+"
 if [ "$1" = "-h" ];then
 	echo "$helpmsg"
 elif [ "$1" = "help" ];then
+	echo "$helpmsg"
+elif [ "$1" = "--help" ];then
 	echo "$helpmsg"
 else
 	echo "caffine command not recognized: $1"
