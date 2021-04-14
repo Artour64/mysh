@@ -1,2 +1,6 @@
 #!/bin/dash
-eval xdg-open "\""$(find -print "$@" | sed 's/^..//' | rofi -sort -i -dmenu -p open-file-a)"\""
+f="$(find -print "$@" | sed 's/^..//' | rofi -sort -i -dmenu -p open-file-a)"
+if [ -z "$f" ]; then
+	exit
+fi
+eval xdg-open "\""$f"\""

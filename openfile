@@ -1,3 +1,8 @@
 #!/bin/dash
-eval xdg-open "\""$(find . -not -path '*/\.*' | sed 's/^..//' | rofi -sort -i -dmenu -p open-file)"\""
+#eval xdg-open "\""$(find . -not -path '*/\.*' | sed 's/^..//' | rofi -sort -i -dmenu -p open-file)"\""
+f="$(find . -not -path '*/\.*' | sed 's/^..//' | rofi -sort -i -dmenu -p open-file)"
+if [ -z "$f" ]; then
+	exit
+fi
+eval xdg-open "\""$f"\""
 

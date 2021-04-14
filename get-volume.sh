@@ -1,6 +1,6 @@
-#/bin/bash
+#!/bin/dash
 mute=$(pacmd list-sinks | awk '/muted/ { print $2 }')
-if [ $mute == "yes" ]; then
+if [ "$mute" = "yes" ]; then
 	m="🔇"
 else
 	m="🔊"
